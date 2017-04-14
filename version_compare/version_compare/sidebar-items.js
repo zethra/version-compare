@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VersionCompare","The main library structure, which provides various static methods for easy version comparison."]]});

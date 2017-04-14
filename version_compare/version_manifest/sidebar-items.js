@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VersionManifest","Version manifest (configuration)."]]});

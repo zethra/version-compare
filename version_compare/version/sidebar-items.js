@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Version","Version struct, which is a representation for a parsed version string."]]});

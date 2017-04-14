@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `version_compare` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, version_compare">
+
+    <title>version_compare - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'version_compare', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>version_compare</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/version_compare/lib.rs.html#1-43' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A rust library to easily compare version numbers,
+and test them against various comparison operators.</p>
+
+<p>Comparing version numbers is hard. Especially when version numbers get really complex, or when their formatting differs.</p>
+
+<p>This library helps you to easily compare any kind of version number with a single code-statement. Two version numbers can be compared to each other, to get a relevant comparison operator (&lt;, ==, &gt;), or version numbers can be tested against any given comparison operator.</p>
+
+<p>Along with version comparison, the library also features other useful tools.
+For example: version numbers can be parsed to inspect a version number by it&#39;s bare numeric or text based parts.</p>
+
+<p>Inspired by PHPs <a href="http://php.net/manual/en/function.version-compare.php">version_compare()</a>.</p>
+
+<h2 id='features' class='section-header'><a href='#features'>Features</a></h2>
+<ul>
+<li>Compare two version numbers, get: <code>&lt;</code>, <code>==</code> or <code>&gt;</code>.</li>
+<li>Compare two version numbers against any comparison operator.</li>
+<li>Parse complex version numbers.</li>
+<li>Static, single-statement methods available.</li>
+</ul>
+
+<p>The following features will be added in a later version:
+* Version manifest, to specify detailed version number constraints.
+* Batch comparisons.</p>
+
+<h2 id='examples' class='section-header'><a href='#examples'>Examples</a></h2>
+<p>Check out the <a href="https://github.com/timvisee/version-compare/tree/master/examples">examples</a> directory for all available examples.</p>
+
+<p><em><a href="https://github.com/timvisee/version-compare/blob/master/README.md">View complete README</a></em></p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use comp_op::<a class='enum' href='../version_compare/comp_op/enum.CompOp.html' title='version_compare::comp_op::CompOp'>CompOp</a>;</code></td></tr><tr><td><code>pub use version::<a class='struct' href='../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>;</code></td></tr><tr><td><code>pub use version_compare::<a class='struct' href='../version_compare/version_compare/struct.VersionCompare.html' title='version_compare::version_compare::VersionCompare'>VersionCompare</a>;</code></td></tr><tr><td><code>pub use version_manifest::<a class='struct' href='../version_compare/version_manifest/struct.VersionManifest.html' title='version_compare::version_manifest::VersionManifest'>VersionManifest</a>;</code></td></tr><tr><td><code>pub use version_part::<a class='enum' href='../version_compare/version_part/enum.VersionPart.html' title='version_compare::version_part::VersionPart'>VersionPart</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='comp_op/index.html'
+                                  title='version_compare::comp_op'>comp_op</a></td>
+                           <td class='docblock-short'>
+                                <p>Module with all supported comparison operators.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='version/index.html'
+                                  title='version_compare::version'>version</a></td>
+                           <td class='docblock-short'>
+                                <p>Version module, which provides the <code>Version</code> struct as parsed version representation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='version_compare/index.html'
+                                  title='version_compare::version_compare'>version_compare</a></td>
+                           <td class='docblock-short'>
+                                <p>Version compare module, with useful static comparison methods.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='version_manifest/index.html'
+                                  title='version_compare::version_manifest'>version_manifest</a></td>
+                           <td class='docblock-short'>
+                                <p>Module for the version manifest.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='version_part/index.html'
+                                  title='version_compare::version_part'>version_part</a></td>
+                           <td class='docblock-short'>
+                                <p>Version part module.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "version_compare";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Version` struct in crate `version_compare`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Version">
+
+    <title>version_compare::version::Version - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>version_compare</a>::<wbr><a href='index.html'>version</a></p><script>window.sidebarCurrent = {name: 'Version', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>version_compare</a>::<wbr><a href='index.html'>version</a>::<wbr><a class='struct' href=''>Version</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/version_compare/version.rs.html#25-29' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Version&lt;'a&gt; { /* fields omitted */ }</pre><div class='docblock'><p>Version struct, which is a representation for a parsed version string.</p>
+
+<p>A version in string format can be parsed using methods like <code>Version::from(&quot;1.2.3&quot;);</code>.
+These methods return a <code>Result</code> holding the parsed version or an error on failure.</p>
+
+<p>The original version string is stored in the struct, and can be accessed using the
+<code>version.as_str()</code> method. Note, that when the version wasn&#39;t parsed from a string
+representation, the returned value is generated.</p>
+
+<p>The struct provides many methods for comparison and probing.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='struct' href='../../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/version_compare/version.rs.html#31-439' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class='method'><span id='from.v' class='invisible'><code>fn <a href='#method.from' class='fnname'>from</a>(version: &amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;Self&gt;</code></span></h4>
+<div class='docblock'><p>Create a <code>Version</code> instance from a version string.</p>
+
+<p>The version string should be passed to the <code>version</code> parameter.</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>CompOp</span>, <span class='ident'>Version</span>};
+
+<span class='kw'>let</span> <span class='ident'>ver</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Eq</span>);</pre>
+</div><h4 id='method.from_manifest' class='method'><span id='from_manifest.v' class='invisible'><code>fn <a href='#method.from_manifest' class='fnname'>from_manifest</a>(version: &amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; manifest: &amp;'a <a class='struct' href='../../version_compare/version_manifest/struct.VersionManifest.html' title='version_compare::version_manifest::VersionManifest'>VersionManifest</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;Self&gt;</code></span></h4>
+<div class='docblock'><p>Create a <code>Version</code> instance from a version string with the given <code>manifest</code>.</p>
+
+<p>The version string should be passed to the <code>version</code> parameter.</p>
+
+<h1 id='examples-1' class='section-header'><a href='#examples-1'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>CompOp</span>, <span class='ident'>Version</span>, <span class='ident'>VersionManifest</span>};
+
+<span class='kw'>let</span> <span class='ident'>manifest</span> <span class='op'>=</span> <span class='ident'>VersionManifest</span>::<span class='ident'>new</span>();
+<span class='kw'>let</span> <span class='ident'>ver</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from_manifest</span>(<span class='string'>&quot;1.2.3&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>manifest</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Eq</span>);</pre>
+</div><h4 id='method.manifest' class='method'><span id='manifest.v' class='invisible'><code>fn <a href='#method.manifest' class='fnname'>manifest</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='struct' href='../../version_compare/version_manifest/struct.VersionManifest.html' title='version_compare::version_manifest::VersionManifest'>VersionManifest</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get the version manifest, if available.</p>
+
+<h1 id='examples-2' class='section-header'><a href='#examples-2'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::<span class='ident'>Version</span>;
+
+<span class='kw'>let</span> <span class='ident'>version</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='kw'>if</span> <span class='ident'>version</span>.<span class='ident'>has_manifest</span>() {
+    <span class='macro'>println</span><span class='macro'>!</span>(
+        <span class='string'>&quot;Maximum version part depth is {} for this version&quot;</span>,
+        <span class='ident'>version</span>.<span class='ident'>manifest</span>().<span class='ident'>unwrap</span>().<span class='ident'>max_depth_number</span>()
+    );
+} <span class='kw'>else</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Version has no manifest&quot;</span>);
+}</pre>
+</div><h4 id='method.has_manifest' class='method'><span id='has_manifest.v' class='invisible'><code>fn <a href='#method.has_manifest' class='fnname'>has_manifest</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>Check whether this version has a manifest.</p>
+
+<h1 id='examples-3' class='section-header'><a href='#examples-3'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::<span class='ident'>Version</span>;
+
+<span class='kw'>let</span> <span class='ident'>version</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='kw'>if</span> <span class='ident'>version</span>.<span class='ident'>has_manifest</span>() {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;This version does have a manifest&quot;</span>);
+} <span class='kw'>else</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;This version does not have a manifest&quot;</span>);
+}</pre>
+</div><h4 id='method.set_manifest' class='method'><span id='set_manifest.v' class='invisible'><code>fn <a href='#method.set_manifest' class='fnname'>set_manifest</a>(&amp;mut self, manifest: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='struct' href='../../version_compare/version_manifest/struct.VersionManifest.html' title='version_compare::version_manifest::VersionManifest'>VersionManifest</a>&gt;)</code></span></h4>
+<div class='docblock'><p>Set the version manifest.</p>
+
+<h1 id='examples-4' class='section-header'><a href='#examples-4'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>Version</span>, <span class='ident'>VersionManifest</span>};
+
+<span class='kw'>let</span> <span class='ident'>manifest</span> <span class='op'>=</span> <span class='ident'>VersionManifest</span>::<span class='ident'>new</span>();
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>version</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='ident'>version</span>.<span class='ident'>set_manifest</span>(<span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='ident'>manifest</span>));</pre>
+</div><h4 id='method.as_str' class='method'><span id='as_str.v' class='invisible'><code>fn <a href='#method.as_str' class='fnname'>as_str</a>(&amp;self) -&gt; &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></span></h4>
+<div class='docblock'><p>Get the original version string.</p>
+
+<h1 id='examples-5' class='section-header'><a href='#examples-5'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::<span class='ident'>Version</span>;
+
+<span class='kw'>let</span> <span class='ident'>ver</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>as_str</span>(), <span class='string'>&quot;1.2.3&quot;</span>);</pre>
+</div><h4 id='method.part' class='method'><span id='part.v' class='invisible'><code>fn <a href='#method.part' class='fnname'>part</a>(&amp;self, index: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;<a class='enum' href='../../version_compare/version_part/enum.VersionPart.html' title='version_compare::version_part::VersionPart'>VersionPart</a>&lt;'a&gt;, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get a specific version part by it&#39;s <code>index</code>.
+An error is returned if the given index is out of bound.</p>
+
+<h1 id='examples-6' class='section-header'><a href='#examples-6'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>Version</span>, <span class='ident'>VersionPart</span>};
+
+<span class='kw'>let</span> <span class='ident'>ver</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>part</span>(<span class='number'>0</span>), <span class='prelude-val'>Ok</span>(<span class='kw-2'>&amp;</span><span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>1</span>)));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>part</span>(<span class='number'>1</span>), <span class='prelude-val'>Ok</span>(<span class='kw-2'>&amp;</span><span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>2</span>)));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>part</span>(<span class='number'>2</span>), <span class='prelude-val'>Ok</span>(<span class='kw-2'>&amp;</span><span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>3</span>)));</pre>
+</div><h4 id='method.parts' class='method'><span id='parts.v' class='invisible'><code>fn <a href='#method.parts' class='fnname'>parts</a>(&amp;self) -&gt; &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../version_compare/version_part/enum.VersionPart.html' title='version_compare::version_part::VersionPart'>VersionPart</a>&lt;'a&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Get a vector of all version parts.</p>
+
+<h1 id='examples-7' class='section-header'><a href='#examples-7'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>Version</span>, <span class='ident'>VersionPart</span>};
+
+<span class='kw'>let</span> <span class='ident'>ver</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver</span>.<span class='ident'>parts</span>(), <span class='kw-2'>&amp;</span><span class='macro'>vec</span><span class='macro'>!</span>[
+    <span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>1</span>),
+    <span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>2</span>),
+    <span class='ident'>VersionPart</span>::<span class='ident'>Number</span>(<span class='number'>3</span>)
+]);</pre>
+</div><h4 id='method.part_count' class='method'><span id='part_count.v' class='invisible'><code>fn <a href='#method.part_count' class='fnname'>part_count</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></span></h4>
+<div class='docblock'><p>Get the number of parts in this version string.</p>
+
+<h1 id='examples-8' class='section-header'><a href='#examples-8'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::<span class='ident'>Version</span>;
+
+<span class='kw'>let</span> <span class='ident'>ver_a</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3&quot;</span>).<span class='ident'>unwrap</span>();
+<span class='kw'>let</span> <span class='ident'>ver_b</span> <span class='op'>=</span> <span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2.3.4&quot;</span>).<span class='ident'>unwrap</span>();
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver_a</span>.<span class='ident'>part_count</span>(), <span class='number'>3</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>ver_b</span>.<span class='ident'>part_count</span>(), <span class='number'>4</span>);</pre>
+</div><h4 id='method.compare' class='method'><span id='compare.v' class='invisible'><code>fn <a href='#method.compare' class='fnname'>compare</a>(&amp;self, other: &amp;<a class='struct' href='../../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>) -&gt; <a class='enum' href='../../version_compare/comp_op/enum.CompOp.html' title='version_compare::comp_op::CompOp'>CompOp</a></code></span></h4>
+<div class='docblock'><p>Compare this version to the given <code>other</code> version.</p>
+
+<p>This method returns one of the following comparison operators:</p>
+
+<ul>
+<li><code>Lt</code></li>
+<li><code>Eq</code></li>
+<li><code>Gt</code></li>
+</ul>
+
+<p>Other comparison operators can be used when comparing, but aren&#39;t returned by this method.</p>
+
+<h1 id='examples-9' class='section-header'><a href='#examples-9'>Examples:</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>CompOp</span>, <span class='ident'>Version</span>};
+
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.3.2&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Lt</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.9&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.9&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Eq</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;0.3.0.0&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;0.3&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Eq</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.7.3&quot;</span>).<span class='ident'>unwrap</span>()), <span class='ident'>CompOp</span>::<span class='ident'>Gt</span>);</pre>
+</div><h4 id='method.compare_to' class='method'><span id='compare_to.v' class='invisible'><code>fn <a href='#method.compare_to' class='fnname'>compare_to</a>(&amp;self, other: &amp;<a class='struct' href='../../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>, operator: &amp;<a class='enum' href='../../version_compare/comp_op/enum.CompOp.html' title='version_compare::comp_op::CompOp'>CompOp</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>Compare this version to the given <code>other</code> version,
+and check whether the given comparison operator is valid.</p>
+
+<p>All comparison operators can be used.</p>
+
+<h1 id='examples-10' class='section-header'><a href='#examples-10'>Examples:</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>version_compare</span>::{<span class='ident'>CompOp</span>, <span class='ident'>Version</span>};
+
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare_to</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.3.2&quot;</span>).<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='ident'>CompOp</span>::<span class='ident'>Lt</span>));
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare_to</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.3.2&quot;</span>).<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='ident'>CompOp</span>::<span class='ident'>Le</span>));
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare_to</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='ident'>CompOp</span>::<span class='ident'>Eq</span>));
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>compare_to</span>(<span class='kw-2'>&amp;</span><span class='ident'>Version</span>::<span class='ident'>from</span>(<span class='string'>&quot;1.2&quot;</span>).<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='ident'>CompOp</span>::<span class='ident'>Le</span>));</pre>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html' title='core::cmp::PartialOrd'>PartialOrd</a> for <a class='struct' href='../../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/version_compare/version.rs.html#442-446' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implement the partial ordering trait for the version struct, to easily allow version comparison.</p>
+</div><div class='impl-items'><h4 id='method.partial_cmp' class='method'><span id='partial_cmp.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#tymethod.partial_cmp' class='fnname'>partial_cmp</a>(&amp;self, other: &amp;Self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html' title='core::cmp::Ordering'>Ordering</a>&gt;</code></span></h4>
+<div class='docblock'><p>This method returns an ordering between <code>self</code> and <code>other</code> values if one exists. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#tymethod.partial_cmp">Read more</a></p>
+</div><h4 id='method.lt' class='method'><span id='lt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.lt' class='fnname'>lt</a>(&amp;self, other: &amp;Rhs) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests less than (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.lt">Read more</a></p>
+</div><h4 id='method.le' class='method'><span id='le.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.le' class='fnname'>le</a>(&amp;self, other: &amp;Rhs) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests less than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;=</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.le">Read more</a></p>
+</div><h4 id='method.gt' class='method'><span id='gt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.gt' class='fnname'>gt</a>(&amp;self, other: &amp;Rhs) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests greater than (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.gt">Read more</a></p>
+</div><h4 id='method.ge' class='method'><span id='ge.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.ge' class='fnname'>ge</a>(&amp;self, other: &amp;Rhs) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests greater than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;=</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.ge">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../../version_compare/version/struct.Version.html' title='version_compare::version::Version'>Version</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/version_compare/version.rs.html#449-453' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implement the partial equality trait for the version struct, to easily allow version comparison.</p>
+</div><div class='impl-items'><h4 id='method.eq' class='method'><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, other: &amp;Self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "version_compare";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
