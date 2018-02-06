@@ -154,7 +154,7 @@ impl<'a> Version<'a> {
     /// TODO: Move this method to some sort of helper class, maybe as part of `VersionPart`.
     fn split_version_str(version: &'a str, manifest: Option<&'a VersionManifest>) -> Option<Vec<VersionPart<'a>>> {
         // Split the version string, and create a vector to put the parts in
-        let split = version.split('.');
+        let split = version.split(|c| c == '.' || c == '-');
         let mut parts = Vec::new();
 
         // Get the manifest to follow
